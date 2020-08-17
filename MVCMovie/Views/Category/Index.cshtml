@@ -1,0 +1,44 @@
+﻿@model MvcMovie.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movie Categories</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action="Movie">Back to Movies</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories[0].CName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories[0].Code)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+      <tbody>
+            @foreach (var item in Model.Categories)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody> 
+</table>
